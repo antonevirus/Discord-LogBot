@@ -36,7 +36,12 @@ async function handleAddChangelog(interaction) {
         .addFields({ name: 'Posted at', value: `<t:${Math.floor(new Date().getTime() / 1000)}:F>`, inline: false });
 
     try {
-        await channel.send({ embeds: [embed] });
+        const sentMessage = await channel.send({ embeds: [embed] });
+        
+        const reactions = ['👍', '👎', '😐']; // You can customize these reactions based on your needs
+        for (const reaction of reactions) {
+            await sentMessage.react(reaction);
+        }
         await interaction.editReply({ content: `Changelog has been posted successfully!` });
     } catch (error) {
         console.error("Failed to execute changelog add command:", error);
@@ -63,7 +68,6 @@ async function handleSetChannel(interaction) {
         await interaction.editReply({ content: "An error occurred while trying to execute the command." });
     }
 }
-
 
 async function handleCheckChannel(interaction){
     try{
