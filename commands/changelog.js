@@ -38,7 +38,7 @@ async function handleAddChangelog(interaction) {
     try {
         const sentMessage = await channel.send({ embeds: [embed] });
         
-        const reactions = ['👍', '👎', '😐']; // You can customize these reactions based on your needs
+        const reactions = ['👍', '👎', '❤️‍🔥']; // You can customize these reactions based on your needs
         for (const reaction of reactions) {
             await sentMessage.react(reaction);
         }
